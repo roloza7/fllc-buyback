@@ -1,3 +1,14 @@
+const axios = require('axios').default;
+
 export const parseItemList = (values) => {
-    alert(values);
+    
+    
+
+
+}
+
+function csvJSON(csv) {
+
+    
+
 }
