@@ -6,6 +6,7 @@ export const lightTheme = {
     toggleBorder: '#313638', //onyx
     background: '#E8E9EB', 
 }
+
 export const darkTheme = {
     body: '#313638', //onyx
     text: '#FAFAFA',

@@ -4,7 +4,6 @@ import { GlobalStyles } from "./components/GlobalStyle"
 import { lightTheme, darkTheme } from "./components/Themes"
 
 // --------------- components ---------------
-import Wrapper from './components/Wrapper'
 import Toggle from './components/Toggler'
 import Navbar from './components/Navbar/Navbar'
 import Content from './components/Content'

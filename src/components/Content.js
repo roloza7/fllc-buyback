@@ -1,8 +1,6 @@
 import styled from "styled-components"
+import InputForm from "./InputForm"
 
-const InputForm = styled.form`
-
-`;
 
 const ContentBox = styled.div`
     display: flex;
@@ -12,14 +10,10 @@ const ContentBox = styled.div`
 
 
 
-const Content = () => {
+const Content = ({ children }) => {
     return (
         <ContentBox>
-            <InputForm>
-        
-
-
-            </InputForm>
+            <InputForm/>
         </ContentBox>
     )
 }

@@ -26,3 +26,4 @@ Toggle.propTypes = {
 }
 
 export default Toggle;
+export { Button };
