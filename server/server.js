@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const appDAO = require('./database/dao')
+const categoryRepository = require('./database/category_repository')
 
 // declare app/json parser
 app.use(express.json());
