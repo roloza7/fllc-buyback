@@ -2,9 +2,13 @@ const express = require('express')
 const path = require('path')
 const app = express()
 
+// declare app/json parser
+app.use(express.json());
+
+
 app.use(express.static(path.join(__dirname, '../build')))
 
-app.get('/hey', (req, res) => res.send('ho!'))
+app.use('/request', require('./routes/request'))
 
 
 
@@ -17,4 +21,4 @@ if (process.env.NODE_ENV == 'production') {
     })
 }
 
-app.listen(8080)
+app.listen(8080, () => console.log('Started server at http://localhost:8080'));

@@ -29,7 +29,7 @@ const Descriptions = styled.h2`
 const InfoBar = () => {
     return (
         <InfoDiv>
-            <Titles> FLLC </Titles>
+            <Titles> No Visual </Titles>
             <Descriptions> Buyback </Descriptions>
         </InfoDiv>
     )
