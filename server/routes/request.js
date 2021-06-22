@@ -9,11 +9,24 @@ router.post('/', (req, res, next) => {
     //console.log("Got body: ", req.body);
     const json = req.body;
     //getTypeidList(json).then(res => console.log(res))
-    getAppraisal(json).then((res) => {
-        const appraisal = res.appraisal
+    getAppraisal(json).then((response) => {
+        var buyprices = []
+        const appraisal = response.appraisal
+
+        // TODO: retrieve db price modifiers
+        const globalmod = 0.95 // GLOBAL MOD - REMOVE 
+
+        // cycle through json and get buy prices
         for (var i = 0; i < appraisal.items.length; i++) {
-            console.log(appraisal.items[i])
+            var data = {}
+            data['name'] = appraisal.items[i].name;
+            data['buyprice'] = parseFloat(appraisal.items[i].prices.buy.max) * globalmod
+            data['quantity'] = parseInt(json[i]['quantity'])
+            buyprices.push(data)
         }
+        
+        // send packaged json to client
+        res.send(JSON.stringify(buyprices))
 
     });
     
@@ -27,7 +40,7 @@ router.post('/', (req, res, next) => {
 
 
 
-    res.send('POST: ' + req.body);
+    //res.send('POST: ' + req.body);
 })
 
 // IN => Json list with item name+typeids
@@ -37,11 +50,13 @@ function getAppraisal(json) {
     var items = []
     var data = {}
     data["market_name"] = "jita"
-
+    
     for (var i = 0; i < json.length; i++) {
         var item = {}
-        item['name'] = json[i]['item']
-        items.push(item)
+        if (json[i]['item'] !== '') {
+            item['name'] = json[i]['item']
+            items.push(item)
+        }
     }
 
     data['items'] = items;

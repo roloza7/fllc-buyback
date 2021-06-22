@@ -5,6 +5,9 @@ import { Button } from "./Toggler"
 // ------------- scripts -------------
 import { parseItemList } from "./scripts/parseItemList"
 
+// ------------- stylesheets ---------
+import './stylesheets/InputForm.css'
+
 const Form = styled.form`
     margin: 5px auto;
     display: flex;
@@ -15,7 +18,8 @@ class InputForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 'Items go here'
+            value: 'Items go here',
+            show: true
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,13 +31,17 @@ class InputForm extends React.Component {
     }
 
     handleSubmit(event) {
-        parseItemList(this.state.value);
+        parseItemList(this.state.value).then((res) => this.props.onJSONParse(res));
+        this.setState({ show: false });
         event.preventDefault();
     }
 
     render() {
+
+        const classes = this.state.show ? 'input-form' : 'input-form hide'
+
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form className={ classes } onSubmit={this.handleSubmit}>
                 <label>
                     <textarea rows="12" cols="50" value={this.state.value} onChange={this.handleChange}></textarea>
                 </label>

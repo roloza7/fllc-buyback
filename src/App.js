@@ -27,7 +27,7 @@ const App = () => {
               <Toggle theme={theme} toggleTheme={themeToggler}/>
             </Navbar>
           </ThemeProvider>
-          <Content></Content>
+          <Content theme={theme}></Content>
         </div>
       </>
     </ThemeProvider>

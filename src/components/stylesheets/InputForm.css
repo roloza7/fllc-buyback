@@ -1,0 +1,8 @@
+.input-form {
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+.input-form.hide {
+    opacity: 0;
+    pointer-events: none;
+}
