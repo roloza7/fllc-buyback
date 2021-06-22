@@ -115,6 +115,9 @@ dist
 # production
 /build
 
+# static db files
+/server/database/files
+
 # misc
 .DS_Store
 .env.local
